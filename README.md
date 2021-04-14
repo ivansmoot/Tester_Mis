@@ -1,7 +1,7 @@
 # HOW TO RUN
 ```
 yarn
-yarn run dev
+yarn dev
 ```
 
 # ABOUT PROJECT
@@ -10,3 +10,10 @@ yarn run dev
 - main.ts里面是全局的引入,包括引入的element组件,路由,还有入口Vue文件:Shell.vue
 - index.html里是项目的基本设置,以及引入里main.ts,即项目的入口
 - router.ts是路由配置,本来是想实现像nuxt那样依据文件结构自动生成路由的,但是没有找到好的方案
+
+# DOCKER STUff
+```
+yarn build
+docker build -t [image name] ./
+docker run -d -p [port num]:80 [image num]
+```

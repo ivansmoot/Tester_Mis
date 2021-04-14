@@ -26,6 +26,7 @@ export default defineConfig({
     // 跨域配置
     proxy: {
       '/api': {
+        // target: 'http://host.docker.internal:80'
         target: 'http://192.168.10.122:6778',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')

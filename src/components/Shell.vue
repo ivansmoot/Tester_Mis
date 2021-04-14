@@ -1,6 +1,6 @@
 <template>
   <div style="height: 50px; width: 300px">
-    <img src="Logo.png" style="height: 50px; width: 50px" @click="go_home"/>
+    <img src="../../public/Logo.png" style="height: 50px; width: 50px" @click="go_home"/>
     <el-radio-group v-model="isCollapse" style="position: relative; top: -40%; left: 5%">
         <el-radio-button :label="false">展开</el-radio-button>
         <el-radio-button :label="true">收起</el-radio-button>
