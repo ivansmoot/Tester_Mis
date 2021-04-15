@@ -14,6 +14,11 @@ const routes = [
     path: '/package',
     name: 'Package',
     component: () => import('../components/Package.vue')
+  },
+  {
+    path: '/uid',
+    name: 'Uid',
+    component: () => import('../components/Uid.vue')
   }
 ]
 

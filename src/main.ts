@@ -9,6 +9,9 @@ import {
           ElSubmenu,
           ElRadioButton,
           ElRadioGroup,
+          ElInput,
+          ElButton,
+          ElMessage
         } from 'element-plus'
 
 const app = createApp(Shell)
@@ -20,6 +23,9 @@ app.use(ElMenuItemGroup)
 app.use(ElSubmenu)
 app.use(ElRadioButton)
 app.use(ElRadioGroup)
+app.use(ElInput)
+app.use(ElButton)
+app.use(ElMessage)
 
 app.use(router)
 
