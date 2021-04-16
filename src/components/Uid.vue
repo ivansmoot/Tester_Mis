@@ -20,22 +20,15 @@
 
 <script lang="ts">
 import { ref, defineComponent, getCurrentInstance } from 'vue'
-import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { test } from '../requests/get'
+import axioses from '../utils/axios'
 
 export default defineComponent({
     setup(){
       let input = ref('')
       function query_uid() {
-        console.log(input.value)
-        axios.get('/api')
-          .catch(_ => {
-            ElMessage({
-              showClose: true,
-                message: '请输入正确的手机号',
-                type: 'error'
-            })
-          })
+        test()
       }
       return { input, query_uid }
     }
@@ -43,5 +36,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 </style>

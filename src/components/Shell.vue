@@ -14,24 +14,32 @@
         <template #title>验证码</template>
       </el-menu-item>
     </el-menu>
-    <img src="Logo.png" style="height: 50px; width: 50px; margin-left: 40px" @click="go_home"/>
+    
   </div>
   <div style="margin-left: 200px;">
-    <router-view/>
+    <div style="float: left;">
+      <router-view/>
+    </div>
+    <div style="float: right; margin-top: 10px">
+      <img src="Logo.png" style="height: 50px; width: 50px;" @click="go_home"/>
+    </div>
+    
   </div>
 </template>
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
-import axios from 'axios'
 
 export default defineComponent({
   setup(){
     const router = useRouter()
+
+    // 点击爱心图标,路由跳转至home
     const go_home = (() => {
       router.push('/')
     })
+    
     return { go_home }
   }
 })

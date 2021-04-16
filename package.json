@@ -7,8 +7,10 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@types/qs": "^6.9.6",
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.39",
+    "qs": "^6.10.1",
     "vue": "^3.0.5",
     "vue-class-component": "^7.2.6",
     "vue-router": "4"
