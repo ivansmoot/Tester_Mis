@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import Shell from './components/Shell.vue'
-import router from './utils/router'
+import router from './router/router'
 import {
           ElIcon,
           ElMenu,

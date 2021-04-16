@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { clearPending } from './axios'
+import { clearPending } from '../requests/axios'
 
 const routes = [
   {

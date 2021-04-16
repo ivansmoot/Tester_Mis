@@ -21,14 +21,14 @@
 <script lang="ts">
 import { ref, defineComponent, getCurrentInstance } from 'vue'
 import { ElMessage } from 'element-plus'
-import { test } from '../requests/get'
-import axioses from '../utils/axios'
+import { phone2uid } from '../requests/get'
+import axioses from '../requests/axios'
 
 export default defineComponent({
     setup(){
       let input = ref('')
       function query_uid() {
-        test()
+        phone2uid(input.value)
       }
       return { input, query_uid }
     }
