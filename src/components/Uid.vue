@@ -28,6 +28,7 @@ export default defineComponent({
     setup(){
       let input = ref('')
       function query_uid() {
+        // get请求的方法都写在get.ts里面里,直接调用就好
         phone2uid(input.value)
       }
       return { input, query_uid }

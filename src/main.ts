@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
-import Shell from './components/Shell.vue'
+import Login from './components/Index.vue'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import router from './router/router'
 import {
           ElIcon,
@@ -14,7 +15,7 @@ import {
           ElMessage
         } from 'element-plus'
 
-const app = createApp(Shell)
+const app = createApp(Login)
 
 app.use(ElIcon)
 app.use(ElMenu)

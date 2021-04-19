@@ -4,22 +4,40 @@ import { clearPending } from '../requests/axios'
 const routes = [
   {
     path: '/',
-    redirect: '/home'
+    redirect: '/login'
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('../components/Login.vue'),
+    meta: {
+      // 登陆页不需要展示左边栏
+      hidden_left_bar: true
+    }
+  },
+  {
+    path: '/welcome',
+    name: 'Welcome',
+    component: () => import('../components/Welcome.vue')
   },
   {
     path: '/home',
-    name: 'Home',
-    component: () => import('../components/Home.vue')
+    component: () => import('../components/Welcome.vue')
   },
   {
     path: '/package',
     name: 'Package',
-    component: () => import('../components/Package.vue')
+    component: () => import('../components/Package.vue'),
   },
   {
     path: '/uid',
     name: 'Uid',
-    component: () => import('../components/Uid.vue')
+    component: () => import('../components/Uid.vue'),
+  },
+  {
+    path: '/verification',
+    name: 'Verification',
+    component: () => import('../components/Verification.vue')
   }
 ]
 
