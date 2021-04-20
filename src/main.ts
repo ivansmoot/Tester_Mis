@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import Login from './components/Index.vue'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import router from './router/router'
 import {
           ElIcon,

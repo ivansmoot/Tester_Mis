@@ -14,11 +14,11 @@
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+        <input type="email" class="form-control" id="floatingInput" v-model="account" placeholder="Account">
+        <label for="floatingInput">Account</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <input type="password" class="form-control" id="floatingPassword" v-model="password" placeholder="Password">
         <label for="floatingPassword">Password</label>
       </div>
 
@@ -36,17 +36,23 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { login } from '../requests/post'
 
 export default defineComponent({
   setup(){
+    const account = ref()
+    const password = ref()
     const router = useRouter()
     // 登陆按钮点击事件
     // TODO
     const signIn = (() => {
-      console.log('click signin !')
-      router.push('/welcome')
+      login(account.value, password.value).then(loginStatus => {
+        if (loginStatus) {
+          router.push('/welcome')
+        }
+      })
     })
-    return { signIn }
+    return { signIn, account, password }
   }
 })
 </script>
