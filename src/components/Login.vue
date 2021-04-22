@@ -35,23 +35,16 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { login } from '../requests/post'
 
 export default defineComponent({
   setup(){
     const account = ref()
     const password = ref()
-    const router = useRouter()
     // 登陆按钮点击事件
-    // 直接调用post.ts里的login方法,逻辑基本都在login里处理,该方法返回一个boolean的promise,
-    // 这里只处理这个返回值,如果登陆成功就跳首页,失败的逻辑在login里处理
+    // 直接调用post.ts里的login方法,逻辑基本都在login里处理
     const signIn = (() => {
-      login(account.value, password.value).then(loginStatus => {
-        if (loginStatus) {
-          router.push('/welcome')
-        }
-      })
+      login(account.value, password.value)
     })
     return { signIn, account, password }
   }

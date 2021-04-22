@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig, AxiosResponse} from 'axios'
 import { ElMessage } from 'element-plus'
 import qs from 'qs'
+import router from '../router/router'
 
 /**
  * 这个文件负责全局设置网络请求相关的内容
@@ -88,11 +89,27 @@ axioses.interceptors.response.use(response => {
   removePending(response)
   return response
 }, error => {
-    if(error.response && error.response.status){
+    // token过期的这种情况单独处理,删除本地token并跳回首页
+    // 问号运算符很好用,不然还得挨个判断是否是undefined,就很蠢
+    if (error?.response?.status == '401') {
+      localStorage.removeItem('loginToken')
+      ElMessage({
+        showClose: true,
+        message: '登陆过期',
+        type: 'error'
+      })
+      router.push('/')
+    } else if (error.response && error.response.status) {
       let errorMessage = `出错了, 错误码: ${error.response.status}`
       ElMessage({
         showClose: true,
         message: errorMessage,
+        type: 'error'
+      })
+    } else {
+      ElMessage({
+        showClose: true,
+        message: '出错了',
         type: 'error'
       })
     }

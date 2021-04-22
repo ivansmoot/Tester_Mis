@@ -1,6 +1,7 @@
 import axioses from './axios'
 import FormData from 'form-data'
 import { ElMessage } from 'element-plus'
+import router from '../router/router'
 
 /**
  * 这个文件里放所有的post请求
@@ -11,29 +12,31 @@ import { ElMessage } from 'element-plus'
 
 // 登陆的网络请求方法,拿到用户填的账号密码后,请求token接口,期望拿到相应的token值
 // 如果没有返回token值,则出错,拿到了就存在本地
-export async function login(account: String, psw: String): Promise<boolean>{
-  let loginStatus: boolean = false
+export async function login(account: String, psw: String){
+  
   const formData = new FormData()
   formData.append('username', account)
   formData.append('password', psw)
 
   await axioses.post('/token', formData)
-    .then(function (response) {
-      if (response) {
-        console.log('登陆成功了')
-        console.log(response.data.access_token)
-        localStorage.setItem('loginToken', response.data.access_token)
-        loginStatus = true
-      } else {
-        console.log('登陆失败了')
-        loginStatus = false
-        ElMessage({
-          showClose: true,
-          message: '账号/密码错误',
-          type: 'error'
-        })
-      }
-    })
-  
-  return loginStatus
+  .then(function (response) {
+    if (response?.data?.error == 'wrong account/password') {
+      ElMessage({
+        showClose: true,
+        message: '账号/密码错误',
+        type: 'error'
+      })
+    } else if (response) {
+      console.log(response)
+      localStorage.setItem('loginToken', response.data.access_token)
+      router.push('/welcome')
+    } else {
+      ElMessage({
+        showClose: true,
+        message: '出错了',
+        type: 'error'
+      })
+    }
+  })
+
 }

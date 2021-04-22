@@ -47,11 +47,18 @@ const router = createRouter({
   routes: routes
 })
 
-
-// 每次有路由跳转时,取消掉所有仍在pending的请求
 router.beforeEach((to, from, next) => {
+  // 每次有路由跳转时,取消掉所有仍在pending的请求
   clearPending()
-  next()
+
+  // 如果已存在token或者本来就是去的登陆页,就该去哪去哪
+  // 如果没token,去的又不是登陆页,就直接跳登陆页
+  let token = localStorage.getItem('loginToken')
+  if (token || to.name == 'Login') {
+    next()
+  } else {
+    next('Login')
+  }
 })
 
 export default router
