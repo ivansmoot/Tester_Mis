@@ -44,7 +44,8 @@ export default defineComponent({
     const password = ref()
     const router = useRouter()
     // 登陆按钮点击事件
-    // TODO
+    // 直接调用post.ts里的login方法,逻辑基本都在login里处理,该方法返回一个boolean的promise,
+    // 这里只处理这个返回值,如果登陆成功就跳首页,失败的逻辑在login里处理
     const signIn = (() => {
       login(account.value, password.value).then(loginStatus => {
         if (loginStatus) {

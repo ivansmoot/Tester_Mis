@@ -12,10 +12,16 @@ export function test() {
   console.log('function test')
 }
 
+
+// 通过手机号查询uid的方法,做了一些参数的过滤
 export function phone2uid(phone_num: String) {
   // 必须是11位的数字才行
   if ((phone_num.length == 11) && !isNaN(Number(phone_num))){
-    axioses.get(`/phone2uid/${phone_num}`)
+    // axioses.get(`/phone2uid/${phone_num}`)
+    axioses({
+      method: 'get',
+      url: `/phone2uid/${phone_num}`
+    })
   } else {
     ElMessage({
       showClose: true,

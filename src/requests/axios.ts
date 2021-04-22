@@ -64,9 +64,12 @@ const axioses = axios.create({
 axioses.interceptors.request.use((config: AxiosRequestConfig) => {
   removePending(config) // 在请求开始前，对之前的请求做检查取消操作
   addPending(config) // 将当前请求添加到 pending 中
-  let token = localStorage.getItem('token')
+  // 拿到本地存储的token值
+  let token = localStorage.getItem('loginToken')
+  // 如果有token,就在header里带上这个token值
   if(token){
-    config.headers.Authorization = `${token}`;
+    config.headers['Authorization'] = 'Bearer ' + token
+    console.log('已有token' + config.headers.Authorization)
   }
   return config
 }, error => {

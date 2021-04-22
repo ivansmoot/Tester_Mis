@@ -8,6 +8,9 @@ import { ElMessage } from 'element-plus'
  * 外部使用的时候直接使用方法,不直接调接口
  */
 
+
+// 登陆的网络请求方法,拿到用户填的账号密码后,请求token接口,期望拿到相应的token值
+// 如果没有返回token值,则出错,拿到了就存在本地
 export async function login(account: String, psw: String): Promise<boolean>{
   let loginStatus: boolean = false
   const formData = new FormData()
@@ -18,6 +21,8 @@ export async function login(account: String, psw: String): Promise<boolean>{
     .then(function (response) {
       if (response) {
         console.log('登陆成功了')
+        console.log(response.data.access_token)
+        localStorage.setItem('loginToken', response.data.access_token)
         loginStatus = true
       } else {
         console.log('登陆失败了')
