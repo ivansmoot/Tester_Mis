@@ -16,7 +16,20 @@
       </ul>
       <!-- 右边的登陆注册按钮 -->
       <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2">Login</button>
+        <button type="button" class="btn btn-outline-primary me-2" @click="centerDialogVisible = true">Logout</button>
+        <el-dialog
+          title="提示"
+          v-model="centerDialogVisible"
+          width="30%"
+          center>
+          <span>确认退出吗？</span>
+          <template #footer>
+            <span class="dialog-footer">
+              <el-button @click="centerDialogVisible = false">取 消</el-button>
+              <el-button type="primary" @click="logout">确 定</el-button>
+            </span>
+          </template>
+        </el-dialog>
         <button type="button" class="btn btn-primary">Sign-up</button>
       </div>
     </header>
@@ -51,9 +64,17 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
+import router from '../router/router'
 
 export default defineComponent({
   setup(){
+    const centerDialogVisible = ref(false)
+    function logout() {
+      centerDialogVisible.value = false
+      localStorage.removeItem('loginToken')
+      router.push('/')
+    }
+    return { centerDialogVisible, logout }
   }
 })
 </script>

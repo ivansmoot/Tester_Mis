@@ -12,7 +12,8 @@ import {
           ElRadioGroup,
           ElInput,
           ElButton,
-          ElMessage
+          ElMessage,
+          ElDialog
         } from 'element-plus'
 
 const app = createApp(Login)
@@ -27,6 +28,7 @@ app.use(ElRadioGroup)
 app.use(ElInput)
 app.use(ElButton)
 app.use(ElMessage)
+app.use(ElDialog)
 
 app.use(router)
 

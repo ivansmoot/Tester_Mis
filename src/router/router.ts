@@ -54,7 +54,9 @@ router.beforeEach((to, from, next) => {
   // 如果已存在token或者本来就是去的登陆页,就该去哪去哪
   // 如果没token,去的又不是登陆页,就直接跳登陆页
   let token = localStorage.getItem('loginToken')
-  if (token || to.name == 'Login') {
+  if (token && to.name == 'Login') {
+    next('Welcome')
+  } else if (token || to.name == 'Login') {
     next()
   } else {
     next('Login')
