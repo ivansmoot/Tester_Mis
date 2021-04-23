@@ -18,7 +18,7 @@
         <label for="floatingInput">Account</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" v-model="password" placeholder="Password">
+        <input type="password" class="form-control" id="floatingPassword" v-model="password" placeholder="Password" @keyup.enter="signIn">
         <label for="floatingPassword">Password</label>
       </div>
 
