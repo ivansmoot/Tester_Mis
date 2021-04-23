@@ -27,7 +27,6 @@ export async function login(account: String, psw: String){
         type: 'error'
       })
     } else if (response) {
-      console.log(response)
       localStorage.setItem('loginToken', response.data.access_token)
       router.push('/welcome')
     } else {

@@ -36,6 +36,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { login } from '../requests/post'
+import SHA512 from 'crypto-js/sha512'
 
 export default defineComponent({
   setup(){
@@ -44,7 +45,9 @@ export default defineComponent({
     // 登陆按钮点击事件
     // 直接调用post.ts里的login方法,逻辑基本都在login里处理
     const signIn = (() => {
-      login(account.value, password.value)
+      // sha512先哈希一下,避免明文传输密码
+      const password_hash = SHA512(password.value).toString()
+      login(account.value, password_hash)
     })
     return { signIn, account, password }
   }

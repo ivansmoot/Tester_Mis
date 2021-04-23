@@ -70,7 +70,6 @@ axioses.interceptors.request.use((config: AxiosRequestConfig) => {
   // 如果有token,就在header里带上这个token值
   if(token){
     config.headers['Authorization'] = 'Bearer ' + token
-    console.log('已有token' + config.headers.Authorization)
   }
   return config
 }, error => {
